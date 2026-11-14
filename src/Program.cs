@@ -395,6 +395,19 @@ namespace GhbgEditor
     // ---------- 主窗体 ----------
     public class MainForm : Form
     {
+        // 全局热键 Ctrl+Alt+G
+        const int WM_HOTKEY = 0x0312;
+        const uint MOD_CONTROL = 0x0002;
+        const uint MOD_ALT = 0x0001;
+        const uint VK_G = 0x47;
+        const int HOTKEY_ID = 0xC0DE;
+
+        [DllImport("user32.dll")]
+        static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+        [DllImport("user32.dll")]
+        static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
         // 存档 Tab
         TextBox txtDir, txtLog;
         CheckBox chkTop;
@@ -437,6 +450,36 @@ namespace GhbgEditor
             lockTimer.Interval = 400;
             lockTimer.Tick += (s, e) => LockTick();
             lockTimer.Start();
+
+            // 注册全局热键 Ctrl+Alt+G：隐藏时唤出，显示时置顶
+            if (!RegisterHotKey(Handle, HOTKEY_ID, MOD_CONTROL | MOD_ALT, VK_G))
+                Log("热键 Ctrl+Alt+G 注册失败（可能被其它程序占用）");
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_HOTKEY && m.WParam.ToInt32() == HOTKEY_ID)
+            {
+                ToggleVisible();
+                return;
+            }
+            base.WndProc(ref m);
+        }
+
+        void ToggleVisible()
+        {
+            if (Visible && WindowState != FormWindowState.Minimized)
+            {
+                Hide();
+                Log("已隐藏，按 Ctrl+Alt+G 重新唤出");
+            }
+            else
+            {
+                Show();
+                if (WindowState == FormWindowState.Minimized) WindowState = FormWindowState.Normal;
+                Activate();
+                TopMost = chkTop.Checked;
+            }
         }
 
         // ================= 存档 Tab =================
@@ -962,6 +1005,7 @@ namespace GhbgEditor
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            UnregisterHotKey(Handle, HOTKEY_ID);
             DetachProc();
             base.OnFormClosing(e);
         }
