@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <AssemblyName>GhbgMod</AssemblyName>
+    <RootNamespace>GhbgMod</RootNamespace>
+    <Nullable>disable</Nullable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MelonLoader"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\MelonLoader.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Il2Cppmscorlib"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Il2CppSystem"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\Il2CppSystem.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnhollowerBaseLib"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnhollowerRuntimeLib"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\UnhollowerRuntimeLib.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.IMGUIModule"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\UnityEngine.IMGUIModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.InputLegacyModule"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\UnityEngine.InputLegacyModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.TextRenderingModule"><HintPath>E:\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\UnityEngine.TextRenderingModule.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

@@ -5,3 +5,7 @@ obj/
 work/
 .vs/
 *.exe
+plugin/bin/
+plugin/obj/
+tools/bin/
+tools/obj/
